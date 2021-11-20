@@ -29,6 +29,7 @@ public class Main extends Application {
     public void init() throws Exception {
         tabFDoc = new TabulatedFunctionDoc();
         tabFDoc.newFunction(0 , 10 ,15);
+
     }
 
     @Override
@@ -36,6 +37,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMainForm.fxml"));
         Parent root = loader.load();
         FXMLMainFormController ctrl = loader.getController();
+        tabFDoc.registerRedrawFunctionController(ctrl);
         Scene scene = new Scene(root);
         stage.setTitle("тим спик");
         stage.setScene(scene);

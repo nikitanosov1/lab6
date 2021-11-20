@@ -38,6 +38,9 @@ public class FXMLMainFormController {
     private TableColumn<FunctionPointT, Double> yColumn;
 
     @FXML
+    private Label labelIndexSelectLine;
+
+    @FXML
     private void initialize(){
         xColumn.setCellValueFactory(new PropertyValueFactory<FunctionPointT, Double>("x"));
         yColumn.setCellValueFactory(new PropertyValueFactory<FunctionPointT, Double>("y"));
@@ -52,13 +55,14 @@ public class FXMLMainFormController {
             data.add(new FunctionPointT(Main.tabFDoc.getPointX(i), Main.tabFDoc.getPointY(i)));
         }
         table.setItems(data);
+        labelIndexSelectLine.setText("Number of points: " + Integer.toString(Main.tabFDoc.getPointsCount()));
+
     }
 
     @FXML
     private void btAddPointNewClick(ActionEvent av){
         try {
             Main.tabFDoc.addPoint(new FunctionPoint(Double.parseDouble(textPointX.getText()), Double.parseDouble(textPointY.getText())));
-            redraw();
         } catch (InappropriateFunctionPointException e) {
             e.printStackTrace();
         }
@@ -69,10 +73,19 @@ public class FXMLMainFormController {
         int selectedID = table.getSelectionModel().getSelectedIndex();
         try {
             Main.tabFDoc.deletePoint(selectedID);
-            redraw();
         } catch (InappropriateFunctionPointException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void tableMouseReleased(){
+        labelIndexSelectLine.setText("Point " + Integer.toString(table.getSelectionModel().getSelectedIndex() + 1) + " of " + Integer.toString(Main.tabFDoc.getPointsCount()));
+    }
+
+    @FXML
+    private void tableKeyReleased(){
+        labelIndexSelectLine.setText("Point " + Integer.toString(table.getSelectionModel().getSelectedIndex() + 1) + " of " + Integer.toString(Main.tabFDoc.getPointsCount()));
     }
 
 }

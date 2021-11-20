@@ -104,7 +104,7 @@ public class ArrayTabulatedFunction implements TabulatedFunction{
     }
     public void deletePoint(int index) throws FunctionPointIndexOutOfBoundsException, InappropriateFunctionPointException{
         if ((index < 0) || (index >= countPoints)) { throw new FunctionPointIndexOutOfBoundsException();}
-        if (countPoints == 3){ throw new InappropriateFunctionPointException();}
+        if (countPoints == 2){ throw new InappropriateFunctionPointException();}
 
         --countPoints;
         for (int i = index; i < countPoints; ++i) points[i] = points[i + 1]; // Сдвиг правой части на массива на место удалённого

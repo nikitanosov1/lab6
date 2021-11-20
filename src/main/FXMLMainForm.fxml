@@ -7,8 +7,8 @@
 
 <AnchorPane prefHeight="664.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLMainFormController">
    <children>
-      <Label layoutX="65.0" layoutY="38.0" text="text" />
-      <TableView fx:id="table" layoutX="27.0" layoutY="63.0" prefHeight="493.0" prefWidth="539.0">
+      <Label fx:id="labelIndexSelectLine" layoutX="27.0" layoutY="39.0" prefHeight="17.0" prefWidth="214.0" text="text" />
+      <TableView fx:id="table" layoutX="27.0" layoutY="63.0" onKeyReleased="#tableKeyReleased" onMouseReleased="#tableMouseReleased" prefHeight="493.0" prefWidth="539.0">
         <columns>
           <TableColumn prefWidth="254.0" text="X value" fx:id="xColumn" />
           <TableColumn fx:id="yColumn" prefWidth="303.0" text="Y value" />

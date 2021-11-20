@@ -22,10 +22,17 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
         this.fileName = null;
         this.modified = false;
         this.fileNameAssigned = false;
+        this.controller = null;
     }
 
-    public void setController(FXMLMainFormController ctrl) {
+    public void registerRedrawFunctionController(FXMLMainFormController ctrl) {
         this.controller = ctrl;
+    }
+
+    public void callRedraw(){
+        if (controller != null){
+            controller.redraw();
+        }
     }
 
     public boolean isModified() {
@@ -39,11 +46,13 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
     public void newFunction(double leftX, double rightX, int pointsCount) {
         tabulatedFunction = new ArrayTabulatedFunction(leftX, rightX, pointsCount);
         modified = true;
+        callRedraw();
     }
 
     public void tabulateFunction(Function function, double leftX, double rightX, int pointsCount) {
         tabulatedFunction = TabulatedFunctions.tabulate(function, leftX, rightX, pointsCount);
         modified = true;
+        callRedraw();
     }
 
     public void saveFunctionAs(String fileName) {
@@ -87,6 +96,7 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
             this.fileName = fileName;
             fileNameAssigned = true;
             modified = false;
+            callRedraw();
         } catch (IOException | ParseException | InappropriateFunctionPointException e) {
             e.printStackTrace();
         }
@@ -128,6 +138,7 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
     @Override
     public void setPoint(int index, FunctionPoint point) throws FunctionPointIndexOutOfBoundsException, InappropriateFunctionPointException {
         tabulatedFunction.setPoint(index, point);
+        callRedraw();
         modified = true;
     }
 
@@ -139,6 +150,7 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
     @Override
     public void setPointX(int index, double x) throws FunctionPointIndexOutOfBoundsException, InappropriateFunctionPointException {
         tabulatedFunction.setPointX(index, x);
+        callRedraw();
         modified = true;
     }
 
@@ -150,18 +162,21 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
     @Override
     public void setPointY(int index, double y) throws FunctionPointIndexOutOfBoundsException {
         tabulatedFunction.setPointY(index, y);
+        callRedraw();
         modified = true;
     }
 
     @Override
     public void deletePoint(int index) throws FunctionPointIndexOutOfBoundsException, InappropriateFunctionPointException {
         tabulatedFunction.deletePoint(index);
+        callRedraw();
         modified = true;
     }
 
     @Override
     public void addPoint(FunctionPoint point) throws InappropriateFunctionPointException {
         tabulatedFunction.addPoint(point);
+        callRedraw();
         modified = true;
     }
 
