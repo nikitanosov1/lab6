@@ -1,10 +1,9 @@
-package functions.doc;
+package application;
 
 import functions.*;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,12 +15,17 @@ public class TabulatedFunctionDoc implements TabulatedFunction{
     private String fileName; // название файла
     private boolean modified; // изменялся ли документ с последнего сохранения
     private boolean fileNameAssigned; // назначено ли имя файла для документа
+    private FXMLMainFormController controller;
 
     public TabulatedFunctionDoc() {
-        this.tabulatedFunction = null;
+        this.tabulatedFunction = new ArrayTabulatedFunction();
         this.fileName = null;
         this.modified = false;
         this.fileNameAssigned = false;
+    }
+
+    public void setController(FXMLMainFormController ctrl) {
+        this.controller = ctrl;
     }
 
     public boolean isModified() {

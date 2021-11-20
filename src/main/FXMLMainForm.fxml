@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<!--xmlns="http://javafx.com/javafx/11.0.2" -->
+
+<AnchorPane prefHeight="664.0" prefWidth="607.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FXMLMainFormController">
+   <children>
+      <Label layoutX="65.0" layoutY="38.0" text="text" />
+      <TableView fx:id="table" layoutX="27.0" layoutY="63.0" prefHeight="493.0" prefWidth="539.0">
+        <columns>
+          <TableColumn prefWidth="254.0" text="X value" fx:id="xColumn" />
+          <TableColumn fx:id="yColumn" prefWidth="303.0" text="Y value" />
+        </columns>
+      </TableView>
+      <TextField fx:id="textPointX" layoutX="121.0" layoutY="568.0" />
+      <TextField fx:id="textPointY" layoutX="121.0" layoutY="604.0" />
+      <Button layoutX="287.0" layoutY="568.0" mnemonicParsing="false" onAction="#btAddPointNewClick" text="Add point" />
+      <Button layoutX="286.0" layoutY="604.0" mnemonicParsing="false" onAction="#btDeleteNewClick" prefHeight="25.0" prefWidth="70.0" text="Delete" />
+      <Label fx:id="edX" layoutX="46.0" layoutY="572.0" text="New point X:" />
+      <Label fx:id="edY" layoutX="46.0" layoutY="608.0" text="New point Y:" />
+   </children>
+</AnchorPane>
