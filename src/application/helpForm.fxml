@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane accessibleText="8" prefHeight="194.0" prefWidth="307.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HelpFormController">
+   <children>
+      <Label layoutX="19.0" layoutY="28.0" text="Left domain border" />
+      <Label layoutX="19.0" layoutY="70.0" text="Right domain border" />
+      <Label layoutX="19.0" layoutY="109.0" text="Points count" />
+      <TextField fx:id="textLeftDomainBorder" layoutX="145.0" layoutY="24.0" text="0" />
+      <TextField fx:id="textRightDomainBorder" layoutX="145.0" layoutY="66.0" text="10" />
+      <Spinner fx:id="spinner" editable="true" layoutX="145.0" layoutY="105.0" />
+      <Button fx:id="btCancel" layoutX="19.0" layoutY="149.0" mnemonicParsing="false" onAction="#btCancelNewClick" prefHeight="31.0" prefWidth="78.0" text="Cancel" />
+      <Button fx:id="btOK" layoutX="215.0" layoutY="149.0" mnemonicParsing="false" onAction="#btOKNewClick" prefHeight="31.0" prefWidth="78.0" text="OK" />
+   </children>
+</AnchorPane>

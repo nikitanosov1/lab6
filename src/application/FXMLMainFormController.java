@@ -6,16 +6,26 @@ import functions.InappropriateFunctionPointException;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.Main;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 
 public class FXMLMainFormController {
+    private Stage stage;
+
     @FXML
     private Label edX;
 
@@ -86,6 +96,20 @@ public class FXMLMainFormController {
     @FXML
     private void tableKeyReleased(){
         labelIndexSelectLine.setText("Point " + Integer.toString(table.getSelectionModel().getSelectedIndex() + 1) + " of " + Integer.toString(Main.tabFDoc.getPointsCount()));
+    }
+
+    @FXML
+    private void menuNewFile(){
+        HelpForm helpForm = new HelpForm();
+        try {
+            System.out.println(helpForm.showDialog(stage));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setStage(Stage stage){
+        this.stage = stage;
     }
 
 }

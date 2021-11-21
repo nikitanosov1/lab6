@@ -37,6 +37,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLMainForm.fxml"));
         Parent root = loader.load();
         FXMLMainFormController ctrl = loader.getController();
+        ctrl.setStage(stage);
         tabFDoc.registerRedrawFunctionController(ctrl);
         Scene scene = new Scene(root);
         stage.setTitle("тим спик");
